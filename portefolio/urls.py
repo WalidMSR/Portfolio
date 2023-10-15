@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cv/', include('cv.urls')),  # Assurez-vous que le nom de l'application est correct
+    path('', include('cv.urls')),  # Assurez-vous que le nom de l'application est correct
 ]
 
 if settings.DEBUG:

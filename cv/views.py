@@ -6,15 +6,23 @@ def index(request) :
     home = Home.objects.latest('updated')
     about = About.objects.latest('updated')
     contact = Contact.objects.filter(about=about)
-    # skills = Skills.objects.all()
-    # project = Project.objects.all()
+    educations = Education.objects.all()
+    experiences = ExperienceProfessionnelle.objects.all()
+    jobs = JobEtudiant.objects.all()
+    projects = Project.objects.all()
+    skills = Skills.objects.all()
+
 
     context = {
         'home': home,
         'about': about,
         'contact': contact,
-        # 'skills': skills,
-        # 'project': project,
+        'educations': educations,
+        'experiences': experiences,
+        'jobs': jobs,
+        'projects': projects,
+        'skills': skills,
+
    }
 
     return render(request, 'index.html',context)
