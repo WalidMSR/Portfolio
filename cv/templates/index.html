@@ -1,0 +1,348 @@
+{% load static %}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+        <!-- ===== BOX ICONS ===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+        <title>cv Walid MNASERI </title>
+    </head>
+    <body>
+        <!--===== HEADER =====-->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="#" class="nav__logo">{{home.name}}</a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#home" class="nav__link active">Accueil</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">À propos </a></li>
+                        <li class="nav__item"><a href="#Education" class="nav__link">Éducation</a></li>
+                        <li class="nav__item"><a href="#Experience" class="nav__link"> Expériences</a></li>
+                        <li class="nav__item"><a href="#Skills" class="nav__link"> Compétences</a></li>
+                        <li class="nav__item"><a href="#Project" class="nav__link"> Projets</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link"> Contactez-moi </a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--===== HOME =====-->
+            <section class="home" id="home" style="height=955px">
+                <div class="home__container bd-grid">
+                    <h1 class="home__title"><span>{{home.greetings1}}</span><br>{{home.greetings2}}</h1>
+
+
+                    <h4 ><span>Etudiant en Master 2 Mathématiques appliquée <br>
+                    Parcours Modélisation et Analyse Numérique <br>
+                    Faculté des sciecnes de Montpellier  </span></h4>
+
+
+
+                    <div class="home__scroll">
+                        <a href="#about" class="home__scroll-link"><i class='bx bx-up-arrow-alt' ></i>Vers le bas</a>
+                    </div>
+
+                    <!-- <img src="assets/img/perfil.png" alt="" class="home__img"> -->
+                </div>
+            </section>
+
+            <!--===== ABOUT =====-->
+            <section class="about section" id="about">
+                <h2 class="section-title">About</h2>
+
+                <div class="about__container bd-grid">
+                    <div class="about__img">
+                        <img src="{{ about.picture.url }}" alt="">
+
+                    </div>
+
+                    <div>
+                        <h2 class="about__subtitle">{{about.name}}</h2>
+                        <span class="about__profession">{{about.career}}</span>
+                        <p class="about__text">{{about.description}}
+
+                        <div class="about__text">
+                            <h3>Compétences Técheniques :</h3>
+                            <ul class ="competence">
+                                <li>Savoir modéliser des différents problèmes.</li>
+                                <li>Utiliser les elements finis, volumes finies et HHO pour rèsoudre des problemes.</li>
+                                <li>Concevoir et programmer des algorithmes fondamentaux en mathématiques.</li>
+                                <li>Utilisation des logiciels de modélisation et de simulation.</li>
+                                <li>Manipuler des théories élaborées en mathématiques pures et appliquées. </li>
+
+                            </ul>
+                        </div>
+
+
+                        <div class="about__social">
+                            <a href="https://www.linkedin.com/in/walid-manseri-062149290/" class="about__social-icon"><i class='bx bxl-linkedin' ></i></a>
+                            <a href="https://github.com/Dilaw99" class="about__social-icon"><i class='bx bxl-github' ></i></a>
+                            <a href="mailto:walid.manseri1@gmail.com"                          class="about__social-icon"><i class='bx bxl-gmail' ></i></a>
+
+                        </div>
+                         <div class="download-button" >
+                            <a href="{{ about.cv.url }}" download>
+                                <button class="download-btn">Download cv   <i class="fas fa-download"></i> </button>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!--===== Education =====-->
+            <section class="portfolio section" id="Education">
+                <h2 class="section-title">Éducation </h2>
+
+                <div class="portfolio__container bd-grid">
+
+
+                    <div class="portfolio__img">
+                        {% for education in educations %}
+                        <div class="education-section" style="display: flex; margin-bottom: 20px;">
+                            <div class="education-date" style="width: 100px;text-align: center;">
+                                <span class="year" style="font-size: 24px;font-weight: bold">{{ education.date }}</span>
+                                <br>
+                                {% if education.en_cours %}
+                                    <br>
+                                    <span >(en cour)</span>
+                                {% endif %}
+                            </div>
+                            <div class="education-details" style="flex: 1;padding-left: 20px;">
+                                <h3 class="education-title" style="font-size: 18px;font-weight: bold;"> {{ education.title }}  </h3>
+                                <p class="education-description" style="font-size: 16px;color: #333;">{{ education.description }}</p>
+                                <p class="education-description" style="font-size: 16px;color: #333;">{{ education.location }}</p>
+
+
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+
+
+                </div>
+            </section>
+            <!--===== Experience =====-->
+            <section class="portfolio section" id="Experience">
+                <h2 class="section-title">Expériences</h2>
+
+                <div class="portfolio__container bd-grid">
+                    <div class="portfolio__img">
+                        <h1>Expérience Professionnelle</h1>
+                            <ul>
+                                {% for experience in experiences %}
+                                <li>
+                                    <div class="experience-item" style=" display: flex;margin-bottom: 20px;">
+                                        <div class="left-column" style="flex: 1;text-align: left;padding-right: 20px;">
+                                            <p>{{ experience.date }}</p>
+                                        </div>
+                                        <div class="right-column" style="flex: 2;text-align: left;">
+                                            <p>{{ experience.title }}</p>
+                                            <p>{{ experience.location }}</p>
+                                            <p>{{ experience.description }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+
+                            <h1>Jobs Étudiants</h1>
+                            <ul>
+                                {% for job in jobs %}
+                                <li>
+                                    <div class="experience-item" style="display: flex;margin-bottom: 20px;">
+                                        <div class="left-column"style="flex: 1;text-align: left;padding-right: 20px;">
+                                            <p>{{ job.date }}</p>
+                                        </div>
+                                        <div class="right-column" style="flex: 2;text-align: left;" >
+                                            <p>{{ job.title }}</p>
+                                            <p>{{ job.location }}</p>
+                                            <p>{{ job.description }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+
+                    </div>
+                </div>
+            </section>
+            <!--===== SKILLS =====-->
+            <section class="skills section" id="Skills">
+                <h2 class="section-title">Compétenses Informatiques</h2>
+
+                <div class="skills__container bd-grid">
+                    <div class="skills__box">
+                        <div class="skills__img">
+
+                           <div class="skills-container" style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1000px; margin: 0 auto;">
+                                {% for skill in skills %}
+                                    <div class="skill" style="flex: 1; margin: 10px; text-align: center; width: calc(25% - 20px);">
+                                        {% if skill.picture %}
+                                            <img src="{{ skill.picture.url }}" alt="{{ skill.language }}" class="skill-image" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+                                        {% endif %}
+                                        <br>
+                                        <div class="skill-description" style="background: white; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                                            <p><b>{{ skill.language }}</b></p>
+                                            <p>{{ skill.description }}</p>
+                                        </div>
+                                    </div>
+
+                                    {% if forloop.counter0 == 3 %}<!-- Commencez une nouvelle ligne après 4 compétences -->
+                                            </div>
+                                            <div class="skills-container" style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1000px; margin: 0 auto;">
+                                        {% endif %}
+                                    {% endfor %}
+</div>
+
+                    </div>
+
+            </section>
+
+            <!--===== Project =====-->
+            <section class="skills section" id="Project">
+                <h2 class="section-title">Projets</h2>
+
+                <div class="skills__container bd-grid">
+                    <div class="skills__box">
+                    <div class="skills__img">
+                        <ul>
+                                {% for project in projects %}
+                                <li>
+                                    <div class="project-section" style="display: flex; margin-bottom: 20px;">
+                                        <div class="project-date" style="width: 100px;">
+                                            <span class="year" style="font-size: 24px; font-weight: bold;">{{ project.date }}</span>
+                                            <br>
+                                            {% if project.en_cours %}
+                                                <br>
+                                                <span>(en cour)</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="project-details" style="flex: 1; padding-left: 20px;">
+                                            <h3 class="project-title" style="font-size: 18px; font-weight: bold;">{{ project.name_project }}</h3>
+                                            <p class="project-description" style="font-size: 16px; color: #333;">{{ project.description }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!--===== CONTACT =====-->
+            <section class="contact section" id="contact" style="background-color: #fafaff;">
+                <h2 class="section-title">Contactez-moi</h2>
+
+                <!-- <div class="contact__container bd-grid">
+                    <div class="contact__info">
+                        <h3 class="contact__subtitle">EMAIL</h3>
+                        <span class="contact__text">info.mail.com</span>
+
+                        <h3 class="contact__subtitle">PHONE</h3>
+                        <span class="contact__text">+20 999-999</span>
+
+                        <h3 class="contact__subtitle">ADRESS</h3>
+                        <span class="contact__text">My contry</span>
+                    </div>
+
+                    <form action="" class="contact__form">
+                        <div class="contact__inputs">
+                            <input type="text" placeholder="Name" class="contact__input">
+                            <input type="mail" placeholder="Email" class="contact__input">
+                        </div>
+
+                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
+
+                        <input type="submit" value="Enviar" class="contact__button">
+                    </form>
+                </div> -->
+
+
+
+                        <!-- <div class="contact__info">
+                            <h3 class="contact__subtitle">Nom</h3>
+                            <span class="contact__text">Prénom</span>
+
+                            <h3 class="contact__subtitle">Email</h3>
+                            <span class="contact__text">Contact Me</span>
+
+                            <h3 class="contact__subtitle">Message</h3>
+                            <span class="contact__text">Submit</span>
+                        </div> -->
+                <div class="contact__container bd-grid">
+                    <form action="" class="contact__form">
+                         <div class="contact__inputs">
+                            <input type="text" placeholder="Prénom" class="contact__input">
+                            <input type="mail" placeholder="Nom" class="contact__input">
+                        </div>
+                        <input type="email" placeholder="Email" class="contact__input form-control" >
+                        <textarea name="message" id="message" placeholder="Laissez moi votre message" class="contact__input form-control" style="width: 100%;"></textarea>
+                        <input type="submit" value="Envoyer" class="contact__button btn btn-primary" style="width: 100%;">
+                    </form>
+                </div>
+
+
+
+            </section>
+        </main>
+
+
+        <!--===== FOOTER =====-->
+        <footer class="footer section">
+            <div class="footer__container bd-grid">
+                <div class="footer__data">
+                    <h2 class="footer__title">Walid MANSERI</h2>
+                    <p class="footer__text">Etudiant en Master 2 Modélisation et Analyse Numérique a Montpellier   </p>
+                </div>
+
+                <div class="footer__data">
+                    <h2 class="footer__title">EXPLORE</h2>
+                    <ul>
+                        <li><a href="#home" class="footer__link">Accueil</a></li>
+                        <li><a href="#about" class="footer__link">À propos</a></li>
+                        <li><a href="#skills" class="footer__link">Éducation</a></li>
+                        <li><a href="#portfolio" class="footer__link">Expériences</a></li>
+                        <li><a href="#Contact" class="footer__link">Compétences</a></li>
+                        <li><a href="#Contact" class="footer__link">Projets</a></li>
+                        <li><a href="#Contact" class="footer__link">Contactez-moi</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h2 class="footer__title">FOLLOW</h2>
+                    <a href="https://www.linkedin.com/in/walid-manseri-062149290/" class="about__social-icon"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="https://github.com/Dilaw99" class="about__social-icon"><i class='bx bxl-github' ></i></a>
+                </div>
+
+
+            </div>
+        </footer>
+
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="static/assets/js/main.js"></script>
+    </body>
+</html>
