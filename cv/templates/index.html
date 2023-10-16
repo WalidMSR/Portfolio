@@ -290,17 +290,27 @@
                             <h3 class="contact__subtitle">Message</h3>
                             <span class="contact__text">Submit</span>
                         </div> -->
-                <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                         <div class="contact__inputs">
-                            <input type="text" placeholder="Prénom" class="contact__input">
-                            <input type="mail" placeholder="Nom" class="contact__input">
-                        </div>
-                        <input type="email" placeholder="Email" class="contact__input form-control" >
-                        <textarea name="message" id="message" placeholder="Laissez moi votre message" class="contact__input form-control" style="width: 100%;"></textarea>
-                        <input type="submit" value="Envoyer" class="contact__button btn btn-primary" style="width: 100%;">
-                    </form>
-                </div>
+                                 <div class="contact__container bd-grid">
+                                        <form method="post" action="">
+                                            {% csrf_token %}
+                                            <div class="contact__inputs">
+                                                <input type="text" name="first_name" placeholder="Prénom" class="contact__input">
+                                                <input type="text" name="last_name" placeholder="Nom" class="contact__input">
+                                            </div>
+                                            <input type="email" name="mail" placeholder="Email" class="contact__input form-control">
+                                            <textarea name="message" placeholder="Laissez moi votre message" class="contact__input form-control" style="width: 100%;"></textarea>
+                                            <input type="submit" value="Envoyer" class="contact__button btn btn-primary" style="width: 100%;">
+                                        </form>
+                                      <!--  {% if request.method == 'POST' %}
+                                            <p>Merci pour votre message. Nous vous répondrons bientôt.</p>
+                                         {% endif %} -->
+                                 </div>
+
+
+
+
+
+
 
 
 
