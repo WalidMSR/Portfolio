@@ -28,7 +28,7 @@
     :root {
         --big-font-size: 6.25rem;
         --h2-font-size: 2rem;
-        ƒ --normal-font-size: 1rem;
+        --normal-font-size: 1rem;
         --small-font-size: .875rem;
     }
 }
@@ -122,7 +122,7 @@ img {
 
 /*===== LAYOUT =====*/
 .bd-grid {
-    max-width: 1024px;
+    max-width: 1190px;
     display: grid;
     grid-template-columns: 100%;
     grid-column-gap: 2rem;
@@ -248,7 +248,7 @@ img {
 
 .about__container {
     justify-items: center;
-    row-gap: 2rem;
+    row-gap: 0rem;
     text-align: center;
 }
 
@@ -456,7 +456,7 @@ img {
     }
 
     .section-title {
-        margin-bottom: 3rem;
+        margin-bottom: 1rem; 
     }
 
     .section-title::after {
@@ -508,7 +508,7 @@ img {
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
         text-align: initial;
-        padding: 4rem 0;
+        padding: 1rem 0;
     }
 
     .about__img {
@@ -562,7 +562,7 @@ img {
     width: 500px;
     right: 24%;
 }
-}
+
 
 /* download button */
 .download-button {

@@ -73,7 +73,7 @@ class Skills(models.Model) :
 class Project(models.Model) :
     date = models.TextField(max_length=500, default="Date par défaut")
     name_project = models.CharField(max_length=100, default="nom  par défaut")
-    description = models.TextField(max_length=500, default="Description par défaut")
+    description = models.TextField(max_length=1000, default="Description par défaut")
     en_cours = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)
     def __str__(self) : 
@@ -104,7 +104,7 @@ class Contact_me(models.Model) :
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     mail = models.EmailField(max_length=50)
-    messgae =models.TextField(max_length=200) 
+    message =models.TextField(max_length=200) 
     updated = models.DateTimeField(auto_now=True)
     def __str__(self) : 
         return f'{self.first_name}{self.last_name}' 
