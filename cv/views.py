@@ -12,7 +12,23 @@ def index(request) :
     projects = Project.objects.all()
     skills = Skills.objects.all()
 
+    if request.method == 'POST':
+        # Récupérez les données du formulaire
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        mail = request.POST.get('mail')
+        message = request.POST.get('message')
 
+        # Créez une instance du modèle Contact_me et enregistrez les données dans la base de données
+        contact = Contact_me(
+            first_name=first_name,
+            last_name=last_name,
+            mail=mail,
+            message=message
+        )
+        contact.save()
+      
+  
     context = {
         'home': home,
         'about': about,
