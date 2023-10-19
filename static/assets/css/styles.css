@@ -18,7 +18,7 @@
 /*===== Fuente y tipografia =====*/
 :root {
     --body-font: 'Montserrat', sans-serif;
-    --big-font-size: 6.25rem;
+    --big-font-size: 3.25rem;
     --h2-font-size: 1.25rem;
     --normal-font-size: .938rem;
     --small-font-size: .813rem;
@@ -82,6 +82,12 @@ ul.competence {
     margin: 0;
     padding-left: 35px;
     /*list-style: none;*/
+}
+
+@media screen and (max-width: 768px) {
+    ul.competence {
+        text-align: left;
+    }
 }
 
 a {
@@ -456,7 +462,7 @@ img {
     }
 
     .section-title {
-        margin-bottom: 1rem; 
+        margin-bottom: 1rem;
     }
 
     .section-title::after {
