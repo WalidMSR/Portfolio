@@ -43,6 +43,7 @@ def index(request) :
 
     return render(request, 'index.html',context)
 
+
 def download_report(request, project_id):
     project = Project.objects.get(id=project_id)
 
