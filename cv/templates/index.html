@@ -310,9 +310,9 @@
                                 <span class="year" style="  font-size: 24px;font-weight: bold">
                                     {{ project.date}}</span>
                                 <br>
-                                {% if project.en_cours %}
+                                {% if project.en_cour %}
 
-                                <span style="font-weight: bold;">(en cours)</span>
+                                <span style="font-weight: bold;">(en cour)</span>
                                 {% endif %}
                             </div>
                             <div class="education-details" style="flex: 1;padding-left: 20px;">
@@ -321,6 +321,10 @@
                                 <p class="education-description"
                                     style="font-size: 16px;color: #333;text-align: justify;">
                                     {{project.description }}</p>
+
+                                {% if project.report %}
+                                    <a href="{% url 'download_report' project.id %}">Télécharger le rapport de stage</a>
+                                {% endif %}
 
 
 
