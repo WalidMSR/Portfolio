@@ -42,3 +42,15 @@ def index(request) :
    }
 
     return render(request, 'index.html',context)
+
+def download_report(request, project_id):
+    project = Project.objects.get(id=project_id)
+
+    if project.report:
+        report_file = project.report.path
+        with open(report_file, 'rb') as file:
+            response = HttpResponse(file.read(), content_type='text/html')
+            response['Content-Disposition'] = f'attachment; filename="{project.name_project}_report.html"'
+            return response
+
+    return HttpResponse('Le rapport de stage n\'est pas disponible.')
