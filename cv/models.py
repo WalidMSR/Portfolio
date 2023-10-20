@@ -74,8 +74,9 @@ class Project(models.Model) :
     date = models.TextField(max_length=500, default="Date par défaut")
     name_project = models.CharField(max_length=100, default="nom  par défaut")
     description = models.TextField(max_length=1000, default="Description par défaut")
-    en_cours = models.BooleanField(default=False)
+    en_cour = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)
+    report = models.FileField(upload_to='reports/', null=True, blank=True)
     def __str__(self) : 
         return self.name_project 
     
