@@ -76,8 +76,9 @@ class Project(models.Model) :
     description = models.TextField(max_length=1000, default="Description par défaut")
     en_cour = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)
-    
-    report = models.FileField(upload_to='reports/', null=True, blank=True)
+      # Champ pour le rapport de stage
+    pdf_report = models.FileField(upload_to='pdf_reports/', null=True, blank=True)
+  
     def __str__(self) : 
         return self.name_project 
     
