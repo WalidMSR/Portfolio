@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import *
 # Create your views here.
@@ -11,6 +12,7 @@ def index(request) :
     jobs = JobEtudiant.objects.all()
     projects = Project.objects.all()
     skills = Skills.objects.all()
+
 
     if request.method == 'POST':
         # Récupérez les données du formulaire
@@ -27,8 +29,7 @@ def index(request) :
             message=message
         )
         contact.save()
-      
-  
+
     context = {
         'home': home,
         'about': about,
@@ -42,16 +43,27 @@ def index(request) :
    }
 
     return render(request, 'index.html',context)
-
-
 def download_report(request, project_id):
     project = Project.objects.get(id=project_id)
 
-    if project.report:
-        report_file = project.report.path
-        with open(report_file, 'rb') as file:
-            response = HttpResponse(file.read(), content_type='text/html')
-            response['Content-Disposition'] = f'attachment; filename="{project.name_project}_report.html"'
+    if project.pdf_report:
+        # Retrieve the PDF file and return it as an attachment
+        pdf_file = project.pdf_report.path
+        with open(pdf_file, 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="{project.name_project}_report.pdf"'
+            return response
+
+    return HttpResponse('Le rapport de stage n\'est pas disponible.')
+
+def view_report(request, project_id):
+    project = Project.objects.get(id=project_id)
+
+    if project.pdf_report:
+        # Retrieve the PDF file and return it for viewing in the browser
+        pdf_file = project.pdf_report.path
+        with open(pdf_file, 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
             return response
 
     return HttpResponse('Le rapport de stage n\'est pas disponible.')
