@@ -323,8 +323,10 @@
                                     style="font-size: 16px;color: #333;text-align: justify;">
                                     {{project.description }}</p>
 
-                                {% if project.report %}
-                                    <a href="{% url 'download_report' project.id %}">Télécharger le rapport de stage</a>
+                                {% if project.pdf_report %}
+                                    <a href="{% url 'download_report' project.id %}" style="color="">Télécharger le rapport de stage (PDF)</a>
+                                     <br>
+                                    <a href="{% url 'view_report' project.id %}">Voir le rapport de stage (PDF)</a>
                                 {% endif %}
 
 
